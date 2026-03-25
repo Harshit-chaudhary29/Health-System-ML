@@ -1,0 +1,258 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='diabetes.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Diabetes Prediction System</h2>
+        <form action="/predict" method="post">
+            <input type="number" step="any" name="Pregnancies" placeholder="Pregnancies" required>
+            <input type="number" step="any" name="Glucose" placeholder="Glucose" required>
+            <input type="number" step="any" name="BloodPressure" placeholder="Blood Pressure" required>
+            <input type="number" step="any" name="SkinThickness" placeholder="Skin Thickness" required>
+            <input type="number" step="any" name="Insulin" placeholder="Insulin" required>
+            <input type="number" step="any" name="BMI" placeholder="BMI" required>
+            <input type="number" step="any" name="DiabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" required>
+            <input type="number" step="any" name="Age" placeholder="Age" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h3>Result: {{ prediction }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='diabetes.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>🩺 Diabetes Prediction System</h2>
+        <form action="/predict" method="post">
+
+            <label>Pregnancies</label>
+            <input type="number" step="any" name="Pregnancies" placeholder="e.g. 2" required>
+            <small>Normal: 0 (if male), varies for females</small>
+
+            <label>Glucose</label>
+            <input type="number" step="any" name="Glucose" placeholder="e.g. 110" required>
+            <small>Normal: 70–140 mg/dL</small>
+
+            <label>Blood Pressure (Systolic)</label>
+            <input type="number" step="any" name="Systolic" placeholder="e.g. 120" required>
+            <small>Normal: 90–120 mmHg</small>
+
+            <label>Blood Pressure (Diastolic)</label>
+            <input type="number" step="any" name="Diastolic" placeholder="e.g. 80" required>
+            <small>Normal: 60–80 mmHg</small>
+
+            <label>Skin Thickness</label>
+            <input type="number" step="any" name="SkinThickness" placeholder="e.g. 23" required>
+            <small>Normal: ~10–50 mm</small>
+
+            <label>Insulin</label>
+            <input type="number" step="any" name="Insulin" placeholder="e.g. 80" required>
+            <small>Normal: 16–166 μU/mL</small>
+
+            <label>BMI</label>
+            <input type="number" step="any" name="BMI" placeholder="e.g. 24.5" required>
+            <small>Normal: 18.5–24.9</small>
+
+            <label>Diabetes Pedigree Function</label>
+            <input type="number" step="any" name="DiabetesPedigreeFunction" placeholder="e.g. 0.5" required>
+            <small>Represents family history risk (higher = more risk)</small>
+
+            <label>Age</label>
+            <input type="number" step="any" name="Age" placeholder="e.g. 35" required>
+            <small>Risk increases after 40+</small>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h3>Result: {{ prediction }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Diabetes Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='diabetes.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h2>🩺 Diabetes Risk Predictor</h2>
+        <p>
+          Enter the patient's data to estimate their diabetes risk based on the
+          Pima Indians dataset parameters.
+        </p>
+      </header>
+
+      <form action="/predict" method="post">
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="Pregnancies">Number of Pregnancies</label>
+            <input
+              type="number"
+              step="1"
+              name="Pregnancies"
+              id="Pregnancies"
+              placeholder="e.g., 2"
+              min="0"
+              required
+            />
+            <small>Value: 0–17</small>
+          </div>
+          <div class="input-group">
+            <label for="Glucose">Glucose (Plasma)</label>
+            <input
+              type="number"
+              step="any"
+              name="Glucose"
+              id="Glucose"
+              placeholder="e.g., 105 mg/dL"
+              min="1"
+              required
+            />
+            <small>Normal: 70–100 mg/dL</small>
+          </div>
+
+          <div class="input-group">
+            <label for="Systolic">Blood Pressure (Systolic)</label>
+            <input
+              type="number"
+              step="any"
+              name="Systolic"
+              id="Systolic"
+              placeholder="e.g., 120 mmHg"
+              min="1"
+              required
+            />
+            <small>Normal: 90–120 mmHg</small>
+          </div>
+          <div class="input-group">
+            <label for="Diastolic">Blood Pressure (Diastolic)</label>
+            <input
+              type="number"
+              step="any"
+              name="Diastolic"
+              id="Diastolic"
+              placeholder="e.g., 80 mmHg"
+              min="1"
+              required
+            />
+            <small>Normal: 60–80 mmHg</small>
+          </div>
+
+          <div class="input-group">
+            <label for="SkinThickness">Skin Thickness (Triceps)</label>
+            <input
+              type="number"
+              step="any"
+              name="SkinThickness"
+              id="SkinThickness"
+              placeholder="e.g., 23 mm"
+              min="0"
+              required
+            />
+            <small>Value: 0–99 mm</small>
+          </div>
+          <div class="input-group">
+            <label for="Insulin">Insulin (2-Hour Serum)</label>
+            <input
+              type="number"
+              step="any"
+              name="Insulin"
+              id="Insulin"
+              placeholder="e.g., 80 μU/mL"
+              min="0"
+              required
+            />
+            <small>Normal: 16–166 μU/mL</small>
+          </div>
+
+          <div class="input-group">
+            <label for="BMI">BMI (Body Mass Index)</label>
+            <input
+              type="number"
+              step="any"
+              name="BMI"
+              id="BMI"
+              placeholder="e.g., 24.5"
+              min="1"
+              required
+            />
+            <small>Healthy: 18.5–24.9</small>
+          </div>
+          <div class="input-group">
+            <label for="DiabetesPedigreeFunction"
+              >Diabetes Pedigree Function</label
+            >
+            <input
+              type="number"
+              step="any"
+              name="DiabetesPedigreeFunction"
+              id="DiabetesPedigreeFunction"
+              placeholder="e.g., 0.5"
+              min="0"
+              required
+            />
+            <small>Family history risk (higher = more risk)</small>
+          </div>
+
+          <div class="input-group full-width">
+            <label for="Age">Age (Years)</label>
+            <input
+              type="number"
+              step="1"
+              name="Age"
+              id="Age"
+              placeholder="e.g., 35"
+              min="1"
+              required
+            />
+            <small>Value: 21–81</small>
+          </div>
+        </div>
+
+        <button type="submit" class="predict-button">GET PREDICTION</button>
+      </form>
+
+      {% if prediction %}
+      <div class="result-box {{ prediction.result_class }}">
+        <h3 class="result-title">Prediction Result</h3>
+        <p class="result-text">{{ prediction.prediction_text | safe }}</p>
+        <p class="disclaimer">
+          This prediction is based on a machine learning model. It is NOT a
+          medical diagnosis. Consult a healthcare professional.
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
